@@ -102,6 +102,11 @@ git clone https://github.com/xmendez/wfuzz $dir/wfuzz;
 git clone https://github.com/secdec/xssmap $dir/xssmap;
 git clone https://github.com/hahwul/websocket-connection-smuggler $dir/websocket-connection-smuggler;
 git clone https://github.com/rastating/wordpress-exploit-framework $dir/wordpress-exploit-framework;
+git clone https://github.com/1ndianl33t/Gf-Patterns;
+mv /root/Gf-Patterns/*.json /root/.gf;
+rm -rf /root/Gf-Patterns;
+wget https://raw.githubusercontent.com/devanshbatham/ParamSpider/master/gf_profiles/potential.json;
+mv /root/potential.json /root/.gf;
 
 echo "
 alias osmedeus='python3 /root/Tools/Osmedeus/osmedeus.py -m "subdomain,portscan,vuln,git,burp,ip" -t'
