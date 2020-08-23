@@ -3,23 +3,30 @@
 systemctl enable ssh;
 systemctl start ssh;
 service ssh start;
+apt-get install gpg-agent;
 echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list;
 gpg --keyserver hkp://keys.gnupg.net --recv-key 7D8D0BF6;
 gpg --fingerprint 7D8D0BF6;
 gpg -a --export 7D8D0BF6 | apt-key add -;
+apt update;
 apt-get -y --allow-unauthenticated install kali-archive-keyring;
 apt-get -y update;
-apt-get -y install kali-linux-everything;
-apt-get update && apt-get upgrade;
-sudo apt-get install golang;
+#apt-get -y install kali-linux-everything;
+#apt-get update && apt-get upgrade;
+#wget https://dl.google.com/go/go1.14.6.linux-amd64.tar.gz;
+#sudo tar -xvf go1.14.6.linux-amd64.tar.gz;
+#sudo mv go /usr/local;
+#export GOROOT=/usr/local/go;
+#export GOPATH=$HOME/go;
+#export PATH=$GOPATH/bin:$GOROOT/bin:$PATH;
 sudo apt-get install python3;
 sudo apt-get install python3-pip;
 sudo apt-get install ruby;
 sudo apt-get install screen;
 sudo apt-get install git;
+mkdir /root/.gf
 mkdir /root/Tools;
 mkdir /root/Recon;
-mkdir /root/arsenal;
 dir=/root/Tools;
 go get -u github.com/m4ll0k/Aron;
 go get github.com/Ice3man543/SubOver;
@@ -43,6 +50,7 @@ pip install requests;
 go get -u github.com/c-bata/go-prompt;
 go get github.com/hahwul/websocket-connection-smuggler;
 GO111MODULE=on go get -u -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei;
+GO111MODULE=on go get -v github.com/OWASP/Amass/v3/...;
 git clone https://github.com/projectdiscovery/nuclei-templates $dir/nuclei-templates;
 go get github.com/haccer/subjack;
 go get github.com/eth0izzle/shhgit;
@@ -53,7 +61,7 @@ GO111MODULE=on go get -u -v github.com/hahwul/dalfox;
 go get github.com/ffuf/ffuf;
 GO111MODULE=on go get -u -v github.com/lc/gau;
 go get -u github.com/tomnomnom/gf;
-cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf;
+cp -r /usr/local/go/src/github.com/tomnomnom/gf/examples ~/.gf/;
 go get github.com/003random/getJS;
 go get github.com/subfinder/goaltdns;
 go get github.com/OJ/gobuster;
@@ -103,11 +111,11 @@ git clone https://github.com/secdec/xssmap $dir/xssmap;
 git clone https://github.com/hahwul/websocket-connection-smuggler $dir/websocket-connection-smuggler;
 git clone https://github.com/rastating/wordpress-exploit-framework $dir/wordpress-exploit-framework;
 git clone https://github.com/1ndianl33t/Gf-Patterns;
-mv /root/Gf-Patterns/*.json /root/.gf;
+mv /root/Gf-Patterns/*.json /root/.gf/;
 rm -rf /root/Gf-Patterns;
 wget https://raw.githubusercontent.com/devanshbatham/ParamSpider/master/gf_profiles/potential.json;
-mv /root/potential.json /root/.gf;
-
+mv /root/potential.json /root/.gf/;
+echo 'source /usr/local/go/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc;
 echo "
 alias osmedeus='python3 /root/Tools/Osmedeus/osmedeus.py -m "subdomain,portscan,vuln,git,burp,ip" -t'
 alias dirsearch='python3 /root/Tools/dirsearch/dirsearch.py -e php,asp,js,aspx,jsp,py,txt,conf,config,bak,backup,swp,old,db,sql -t 300 -u'
@@ -135,6 +143,17 @@ alias Bheem=/root/arsenal/Bheem.sh
 alias reverse=/root/arsenal/reverse.sh
 alias corsy=/root/arsenal/corsy.sh
 " >> /root/.bashrc;
-source ~/.bashrc;
-export  PATH=$PATH:/root/go/bin; 
+echo "
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+" >> /root/.bashrc;
+cd;
+git clone https://github.com/harsh-bothra/Bheem.git;
+mv /root/Bheem/arsenal /root/;
+chmod +x /root/arsenal/*;
+rm -rf /root/Bheem;
+. ~/.bashrc;
 
+#configure subfinder /root/.config/subfinder/config.yaml
+# change key /root/arsenal/extractor.sh 
