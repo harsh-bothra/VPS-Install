@@ -151,5 +151,8 @@ cd;
 git clone https://github.com/harsh-bothra/Bheem.git;
 mv /root/Bheem/arsenal /root/;
 chmod +x /root/arsenal/*;
+rm -rf /root/Bheem;
 #. ~/.bashrc;
-#echo " Don't Forget to run ' source ~/.bashrc ' after completion"
+echo " Don't Forget to run ' source ~/.bashrc ' after completion"
+echo "Configure subfinder /root/.config/subfinder/config.yaml"
+echo "Update key /root/arsenal/extractor.sh"
