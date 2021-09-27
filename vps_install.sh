@@ -53,7 +53,7 @@ GO111MODULE=on go get -u -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei;
 git clone https://github.com/projectdiscovery/nuclei-templates $dir/nuclei-templates;
 go get github.com/haccer/subjack;
 go get github.com/eth0izzle/shhgit;
-GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/cmd/subfinder;
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest;
 go get github.com/tiagorlampert/CHAOS;
 GO111MODULE=on go get -u github.com/projectdiscovery/chaos-client/cmd/chaos;
 GO111MODULE=on go get -u -v github.com/hahwul/dalfox;
